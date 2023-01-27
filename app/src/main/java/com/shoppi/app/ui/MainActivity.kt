@@ -1,4 +1,4 @@
-package com.shoppi.app
+package com.shoppi.app.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.shoppi.app.R
 
 private const val TAG = "MainActivity"
 
