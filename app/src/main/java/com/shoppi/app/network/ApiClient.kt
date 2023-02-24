@@ -17,6 +17,11 @@ interface ApiClient {
     @GET("fashion_female.json")
     suspend fun getCategoryDetail(): CategoryDetail
 
+    /*
+    * TODO
+    *  */
+
+
     companion object {
 
         private val baseUrl = "https://shoppi-bbbc8-default-rtdb.asia-southeast1.firebasedatabase.app/"
