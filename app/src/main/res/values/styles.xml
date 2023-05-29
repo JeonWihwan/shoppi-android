@@ -108,6 +108,10 @@
         <item name="android:textColor">@color/shoppi_white</item>
     </style>
 
+    <style name="TextCaption1.Grey01">
+        <item name="android:textColor">@color/shoppi_grey_01</item>
+    </style>
+
     <style name="TextCaption1.Grey03" parent="TextAppearance.AppCompat.Caption">
         <item name="android:textColor">@color/shoppi_grey_03</item>
     </style>

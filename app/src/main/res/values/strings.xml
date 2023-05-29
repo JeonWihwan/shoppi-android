@@ -7,13 +7,28 @@
     <string name="unit_discount_rate">%d%%</string>
     <string name="unit_discount_currency">%s원</string>
 
+
+    <!--  Image description  -->
     <string name="description_product_detail_image">상품 상세 이미지</string>
+    <string name="description_cart_item_thumbnail">장바구니에 추가한 상품의 썸네일 이미지</string>
+    <string name="description_btn_delete_cart_item">장바구니 상품 삭제 버튼</string>
+    <string name="description_btn_minus_cart_item">장바구니 상품 갯수 차감 버튼</string>
+    <string name="description_btn_plus_cart_item">장바구니 상품 갯수 증가 버튼</string>
+
+
+    <!--  Category  -->
+
+
     <string name="label_category">카테고리</string>
     <string name="label_home_icon">홈</string>
-    <string name="label_cart_icon">장바구니</string>
+    <string name="label_cart">장바구니</string>
     <string name="label_category_new">NEW</string>
+
+    <!--  Cart  -->
+    <string name="label_cart_purchase_button">선택한 상품 주문하기</string>
 
     <!--  Product Detail  -->
     <string name="label_product_price_description">쿠폰 적용가</string>
     <string name="label_add_cart">장바구니 담기</string>
+
 </resources>
