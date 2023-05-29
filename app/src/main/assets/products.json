@@ -6,6 +6,7 @@
       "discount_rate": 9,
       "price": 102000,
       "type": "Free",
+      "thumbnail_image_url": "https://user-images.githubusercontent.com/38161763/214502994-1a0a7e7e-e18f-4d9c-b295-4aeb11e7192a.png",
       "representative_image_url": "https://user-images.githubusercontent.com/20774764/149948250-8968498e-e204-4b35-8d52-8d9aecd1d54a.png",
       "descriptions": [
         {
@@ -25,6 +26,7 @@
       "discount_rate": 16,
       "price": 160000,
       "type": "1800x720",
+      "thumbnail_image_url": "https://user-images.githubusercontent.com/38161763/214502996-70b74cfe-c789-425b-a128-0cc98605be06.png",
       "representative_image_url": "https://user-images.githubusercontent.com/20774764/149948259-9806ff37-0719-4e34-b11f-be0056c7fea8.png",
       "descriptions": [
         {

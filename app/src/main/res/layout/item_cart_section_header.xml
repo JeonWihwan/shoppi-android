@@ -1,33 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:padding="16dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <CheckBox
-        android:id="@+id/checkbox_cart_section"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:background="@drawable/selector_checkbox"
-        android:button="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:checked="false"
-        />
+    <data>
+        <variable
+            name="header"
+            type="com.shoppi.app.model.CartHeader" />
+    </data>
 
-    <TextView
-        style="@style/TextSubtitle1.Bold"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/checkbox_cart_section"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="twg. official"
-        />
+        android:padding="16dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <CheckBox
+            android:id="@+id/checkbox_cart_section"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/selector_checkbox"
+            android:button="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:checked="false" />
+
+        <TextView
+            style="@style/TextSubtitle1.Bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{header.brandName}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/checkbox_cart_section"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="twg. official" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
