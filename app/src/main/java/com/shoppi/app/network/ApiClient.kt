@@ -24,7 +24,7 @@ interface ApiClient {
 
     companion object {
 
-        private val baseUrl = "https://shoppi-bbbc8-default-rtdb.asia-southeast1.firebasedatabase.app/"
+        private const val baseUrl = "https://shoppi-bbbc8-default-rtdb.asia-southeast1.firebasedatabase.app/"
 
         fun create(): ApiClient {
             val logger = HttpLoggingInterceptor().apply {

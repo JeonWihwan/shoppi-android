@@ -19,21 +19,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/iv_product_thumbnail"
-                    app:shapeAppearanceOverlay="@style/RoundedBig"
-                    imageUrl="@{product.representativeImageUrl}"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginStart="16dp"
-                    android:contentDescription="@string/description_product_detail_thumbnail"
-                    tools:src="@drawable/img_pdp_top_01"
-                    app:layout_constraintDimensionRatio="w, 1:1"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
                 <TextView
                     android:id="@+id/tv_product_label"
                     style="@style/TextMedium"
@@ -84,7 +69,6 @@
                     app:layout_constraintStart_toEndOf="@id/tv_product_discount_price"
                     tools:text="110,000원" />
 
-                <!-- sp : 사용자의 폰트 사이즈에 따라 크기 변경-->
                 <TextView
                     android:id="@+id/tv_product_detail_image_title"
                     style="@style/TextSubtitle3"
@@ -96,6 +80,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/view_divider_product" />
 
+                <!-- sp : 사용자의 폰트 사이즈에 따라 크기 변경-->
                 <TextView
                     android:id="@+id/tv_product_brand_name"
                     style="@style/TextSubtitle3.Gray03"
@@ -126,16 +111,30 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="24dp"
                     android:layout_marginTop="24dp"
+                    android:contentDescription="@string/description_product_detail_image"
                     android:nestedScrollingEnabled="false"
                     android:orientation="vertical"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    android:contentDescription="@string/description_product_detail_image"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_product_detail_image_title"
-                    tools:listitem="@layout/item_product_description"
-                    />
+                    tools:listitem="@layout/item_product_description" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_product_thumbnail"
+                    imageUrl="@{product.representativeImageUrl}"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:contentDescription="@string/description_product_detail_thumbnail"
+                    app:layout_constraintDimensionRatio="w, 1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/RoundedBig"
+                    tools:src="@drawable/img_pdp_top_01" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -178,6 +177,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/background_purple_r24_gradient"
+                android:onClick="@{() -> viewModel.addCart(product)}"
                 android:text="@string/label_add_cart"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -205,6 +205,10 @@
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <data>
+
+        <variable
+            name="viewModel"
+            type="com.shoppi.app.ui.productdetail.ProductDetailViewModel" />
 
         <variable
             name="product"

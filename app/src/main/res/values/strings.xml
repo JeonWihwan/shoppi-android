@@ -30,5 +30,7 @@
     <!--  Product Detail  -->
     <string name="label_product_price_description">쿠폰 적용가</string>
     <string name="label_add_cart">장바구니 담기</string>
+    <string name="dialog_title_add_cart">장바구니에 상품이 담겼습니다</string>
+    <string name="dialog_button_label_confirm">확인</string>
 
 </resources>

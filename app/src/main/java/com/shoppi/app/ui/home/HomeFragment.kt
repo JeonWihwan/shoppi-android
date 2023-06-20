@@ -11,6 +11,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -20,10 +21,9 @@ import com.shoppi.app.common.KEY_CATEGORY_ID
 import com.shoppi.app.common.KEY_CATEGORY_LABEL
 import com.shoppi.app.common.KEY_PRODUCT_ID
 import com.shoppi.app.databinding.FragmentHomeBinding
-import com.shoppi.app.ui.common.EventObserver
-import com.shoppi.app.ui.common.ViewModelFactory
+import com.shoppi.app.ui.common.*
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), ProductClickListener {
 
     private val viewModel: HomeViewModel by viewModels { ViewModelFactory(requireContext()) }
     private lateinit var binding: FragmentHomeBinding
@@ -42,23 +42,30 @@ class HomeFragment : Fragment() {
 
         binding.lifecycleOwner = viewLifecycleOwner
         setToolbar()
+        setNavigation()
         setTopBanners()
-
-        viewModel.openProductDetailEvent.observe(viewLifecycleOwner, EventObserver{
-            openProductDetail(it)
-        })
+        setListAdapter()
     }
 
-    private fun openProductDetail(productId: String) {
+    // ProductClickListener
+    override fun onProductClick(productId: String) {
         findNavController().navigate(R.id.action_home_to_product_detail, bundleOf(
-            KEY_PRODUCT_ID to productId
+            KEY_PRODUCT_ID to "desk-1"
         ))
     }
 
     private fun setToolbar() {
-        viewModel.title.observe(viewLifecycleOwner) {
-            binding.title = it
+        viewModel.title.observe(viewLifecycleOwner) { title ->
+            binding.title = title
         }
+    }
+
+    private fun setNavigation() {
+        viewModel.openProductEvent.observe(viewLifecycleOwner, EventObserver { productId ->
+            findNavController().navigate(R.id.action_home_to_product_detail, bundleOf(
+                KEY_PRODUCT_ID to productId
+            ))
+        })
     }
 
     private fun setTopBanners() {
@@ -68,7 +75,6 @@ class HomeFragment : Fragment() {
                     submitList(banners)
                 }
             }
-
             val pageWidth = resources.getDimension(R.dimen.viewpager_item_width)
             val pageMargin = resources.getDimension(R.dimen.viewpager_item_margin)
             val screenWidth = resources.displayMetrics.widthPixels
@@ -81,6 +87,16 @@ class HomeFragment : Fragment() {
             TabLayoutMediator(binding.viewpagerHomeBannerIndicator, this) { tab, position ->
 
             }.attach()
+        }
+    }
+
+    private fun setListAdapter() {
+        val titleAdapter = SectionTitleAdapter()
+        val promotionAdapter = ProductPromotionAdapter(this)
+        binding.rvHome.adapter = ConcatAdapter(titleAdapter, promotionAdapter)
+        viewModel.promotions.observe(viewLifecycleOwner) { promotions ->
+            titleAdapter.submitList(listOf(promotions.title))
+            promotionAdapter.submitList(promotions.items)
         }
     }
 

@@ -8,6 +8,8 @@ import com.shoppi.app.ServiceLocator
 import com.shoppi.app.model.CategoryDetail
 import com.shoppi.app.network.ApiClient
 import com.shoppi.app.repository.*
+import com.shoppi.app.repository.cart.CartItemLocalDataSource
+import com.shoppi.app.repository.cart.CartRepository
 import com.shoppi.app.repository.productdetail.ProductDetailRemoteDataSource
 import com.shoppi.app.repository.productdetail.ProductDetailRepository
 import com.shoppi.app.ui.cart.CartViewModel
@@ -35,10 +37,10 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
                 // ServiceLocator 추가
                 val repository = ProductDetailRepository(ProductDetailRemoteDataSource(
                     ServiceLocator.provideApiClient()))
-                ProductDetailViewModel(repository) as T
+                ProductDetailViewModel(repository, ServiceLocator.provideCartRepository(context)) as T
             }
             modelClass.isAssignableFrom(CartViewModel::class.java) -> {
-                CartViewModel() as T
+                CartViewModel(ServiceLocator.provideCartRepository(context)) as T
             }
             else -> {
                 throw java.lang.IllegalArgumentException("Failed to create ViewModel: ${modelClass.name}")
